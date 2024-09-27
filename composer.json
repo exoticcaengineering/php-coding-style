@@ -3,10 +3,10 @@
   "type": "library",
   "description": "PHP Coding Style rules for Exoticca's projects.",
   "keywords": ["Code style"],
-  "license": "proprietary",
+  "license": "MIT",
   "support": {
-    "issues": "https://github.com/exoticca/coding-style/issues",
-    "source": "https://github.com/exoticca/coding-style"
+    "issues": "https://github.com/exoticcaengineering/php-coding-style/issues",
+    "source": "https://github.com/exoticcaengineering/php-coding-style"
   },
   "require": {
     "symplify/easy-coding-standard": "^12.1"
