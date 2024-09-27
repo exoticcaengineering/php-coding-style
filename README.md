@@ -15,7 +15,7 @@ composer require --dev exoticca/coding-style
 Create a `ecs.php` file in the root of your project:
 
 ```php
-use Hereldar\CodingStyle;
+use Exoticca\CodingStyle;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 
 return ECSConfig

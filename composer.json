@@ -1,7 +1,7 @@
 {
   "name": "exoticca/coding-style",
   "type": "library",
-  "description": "PHP Coding Style rules for Exoticca projects.",
+  "description": "PHP Coding Style rules for Exoticca's projects.",
   "keywords": ["Code style"],
   "license": "proprietary",
   "support": {

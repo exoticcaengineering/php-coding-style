@@ -4,7 +4,6 @@
     findUnusedBaselineEntry="true"
     findUnusedCode="true"
     findUnusedVariablesAndParams="true"
-    resolveFromConfigFile="true"
     strictBinaryOperands="true"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://getpsalm.org/schema/config"
@@ -20,10 +19,5 @@
     <issueHandlers>
         <InternalClass errorLevel="suppress"/>
         <InternalMethod errorLevel="suppress"/>
-        <PropertyNotSetInConstructor>
-            <errorLevel type="suppress">
-                <referencedProperty name="PhpCsFixer\AbstractFixer::$whitespacesConfig" />
-            </errorLevel>
-        </PropertyNotSetInConstructor>
     </issueHandlers>
 </psalm>
