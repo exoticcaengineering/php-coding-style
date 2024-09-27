@@ -14,7 +14,7 @@ return ECSConfig
     ::configure()
     ->withPhpCsFixerSets(
         php80Migration: true,
-        phpCsFixer: true,
+        symfony: true,
     )
     ->withRules([
         FullyQualifiedStrictTypesFixer::class,
