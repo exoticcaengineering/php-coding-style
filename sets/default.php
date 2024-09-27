@@ -14,7 +14,6 @@ return ECSConfig
     ::configure()
     ->withPhpCsFixerSets(
         php80Migration: true,
-        per: true,
         symfony: true,
     )
     ->withRules([
