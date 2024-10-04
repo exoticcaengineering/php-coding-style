@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Exoticca\CodingStyle\Rules\DeclareStrictTypesFixer;
 use Exoticca\CodingStyle\Rules\InlineVarTagFixer;
 use Exoticca\CodingStyle\Rules\ValueObjectImportFixer;
+use PhpCsFixer\Fixer\Comment\MultilineCommentOpeningClosingFixer;
 use PhpCsFixer\Fixer\Import\FullyQualifiedStrictTypesFixer;
 use PhpCsFixer\Fixer\Import\GlobalNamespaceImportFixer;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
@@ -21,6 +22,7 @@ return ECSConfig
         DeclareStrictTypesFixer::class,
         InlineVarTagFixer::class,
         ValueObjectImportFixer::class,
+        MultilineCommentOpeningClosingFixer::class,
     ])
     ->withConfiguredRule(
         GlobalNamespaceImportFixer::class,
