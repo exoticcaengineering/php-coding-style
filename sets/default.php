@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Exoticca\CodingStyle\Rules\DeclareStrictTypesFixer;
 use Exoticca\CodingStyle\Rules\InlineVarTagFixer;
 use Exoticca\CodingStyle\Rules\ValueObjectImportFixer;
+use PhpCsFixer\Fixer\FunctionNotation\SingleLineThrowFixer;
 use PhpCsFixer\Fixer\Import\FullyQualifiedStrictTypesFixer;
 use PhpCsFixer\Fixer\Import\GlobalNamespaceImportFixer;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
@@ -16,6 +17,9 @@ return ECSConfig
         php80Migration: true,
         phpCsFixer: true,
     )
+    ->withSkip([
+        SingleLineThrowFixer::class,
+    ])
     ->withRules([
         FullyQualifiedStrictTypesFixer::class,
         DeclareStrictTypesFixer::class,
