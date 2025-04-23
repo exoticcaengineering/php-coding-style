@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Exoticca\CodingStyle\Rules;
 
+use Override;
 use PhpCsFixer\AbstractFixer;
 use PhpCsFixer\FixerDefinition\CodeSample;
 use PhpCsFixer\FixerDefinition\FixerDefinition;
@@ -12,33 +13,36 @@ use PhpCsFixer\Tokenizer\Token;
 use PhpCsFixer\Tokenizer\Tokens;
 use SplFileInfo;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 final class InlineVarTagFixer extends AbstractFixer
 {
+    #[Override]
     public function getDefinition(): FixerDefinitionInterface
     {
         return new FixerDefinition(
             'Inline `@var` tags should be included in PHPDoc annotations.',
             [
-                new CodeSample(
-                    <<<'PHP'
-                        <?php
+                new CodeSample(<<<'PHP'
+                    <?php
 
+                    // @var string
+                    $foo = $_GET['foo'];
+
+                    // @var string $bar
+                    $bar = $_GET['bar'];
+
+                    function bat(): string {
                         // @var string
-                        $foo = $_GET['foo'];
-
-                        // @var string $bar
-                        $bar = $_GET['bar'];
-
-                        function bat(): string {
-                            // @var string
-                            return $_GET['bat'];
-                        }
-                        PHP
-                ),
-            ]
+                        return $_GET['bat'];
+                    }
+                    PHP),
+            ],
         );
     }
 
+    #[Override]
     public function getName(): string
     {
         return 'Exoticca/inline_var_tag_fixer';
@@ -47,19 +51,27 @@ final class InlineVarTagFixer extends AbstractFixer
     /**
      * Must run after SingleLineCommentStyleFixer.
      */
+    #[Override]
     public function getPriority(): int
     {
         return -40;
     }
 
+    #[Override]
     public function isCandidate(Tokens $tokens): bool
     {
         return $tokens->isAnyTokenKindsFound([T_COMMENT, T_DOC_COMMENT]);
     }
 
+    #[Override]
     protected function applyFix(SplFileInfo $file, Tokens $tokens): void
     {
+        /**
+         * @var int $index
+         * @var Token $token
+         */
         foreach ($tokens as $index => $token) {
+            /** @psalm-suppress RedundantCondition */
             if (!$token->isGivenKind(T_COMMENT)
                 && !$token->isGivenKind(T_DOC_COMMENT)) {
                 continue;
@@ -71,6 +83,10 @@ final class InlineVarTagFixer extends AbstractFixer
                 continue;
             }
 
+            /** @var int $tokenId */
+            $tokenId = $token->getId();
+
+            /** @var string $content */
             $content = preg_replace(
                 '/
                     ^
@@ -82,12 +98,12 @@ final class InlineVarTagFixer extends AbstractFixer
                     $
                 /xS',
                 '\1',
-                trim($comment)
+                trim($comment),
             );
 
             $fixedComment = "/** {$content} */";
 
-            $tokens[$index] = new Token([$token->getId(), $fixedComment]);
+            $tokens[$index] = new Token([$tokenId, $fixedComment]);
         }
     }
 }

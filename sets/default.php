@@ -13,7 +13,7 @@ use Symplify\EasyCodingStandard\ValueObject\Option as ECS;
 return ECSConfig
     ::configure()
     ->withPhpCsFixerSets(
-        php80Migration: true,
+        php83Migration: true,
         phpCsFixer: true,
     )
     ->withRules([
