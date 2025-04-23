@@ -7,6 +7,7 @@ use Exoticca\CodingStyle\Rules\InlineVarTagFixer;
 use Exoticca\CodingStyle\Rules\ValueObjectImportFixer;
 use PhpCsFixer\Fixer\Import\FullyQualifiedStrictTypesFixer;
 use PhpCsFixer\Fixer\Import\GlobalNamespaceImportFixer;
+use PhpCsFixer\Fixer\Semicolon\MultilineWhitespaceBeforeSemicolonsFixer;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 use Symplify\EasyCodingStandard\ValueObject\Option as ECS;
 
@@ -21,6 +22,7 @@ return ECSConfig
         DeclareStrictTypesFixer::class,
         InlineVarTagFixer::class,
         ValueObjectImportFixer::class,
+        MultilineWhitespaceBeforeSemicolonsFixer::class,
     ])
     ->withConfiguredRule(
         GlobalNamespaceImportFixer::class,
